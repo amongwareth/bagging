@@ -19,21 +19,15 @@ pd(subparsers)
 '''
 TODO
 -----
-	+ set up github for this repo
 	+ check what argparse.Namespace() man
 	+ implement optim_alg parser 
 '''
 if __name__ == '__main__':
     """ OPTIBAG entry point. """
-    # Remove prog name
     rest = sys.argv[1::]
     args = argparse.Namespace()
     common = False
-    # Do all chaining sub command
-    if not rest:
-        describe(args, [])
-        exit(0)
-
+    describe(args, [])
     while rest:
         args, nrest = parser.parse_known_args(rest, namespace=args)
         if common and nrest == rest:
@@ -48,5 +42,4 @@ if __name__ == '__main__':
         else:
             args.action(args, [])
         rest = nrest
-
     exit(0)

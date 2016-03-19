@@ -9,13 +9,13 @@ class DataGeneration(object):
 
     def __init__(self, **kwargs_gen):
         super().__init__()
-        self.nb_bid = kwargs_gen.get(nb_bids, config.__DEFAULT_NB_BIDS__)
-        self.maxp = kwargs_gen.get(max_p, config.__DEFAULT_MAX_P__)
-        self.minp = kwargs_gen.get(min_p, config.__DEFAULT_MIN_P__)
-        self.maxq = kwargs_gen.get(max_q, config.__DEFAULT_MAX_Q__)
-        self.minq = kwargs_gen.get(min_q, config.__DEFAULT_MIN_Q__)
-        self.nb_classes = kwargs_gen.get(nb_classes, config.__DEFAULT_NB_CLASSES__)
-        self.nb_groups = kwargs_gen.get(nb_groups, config.__DEFAULT_NB_GROUPS__)
+        self.nb_bids = kwargs_gen.get('nb_bids', config.__DEFAULT_NB_BIDS__)
+        self.maxp = kwargs_gen.get('max_p', config.__DEFAULT_MAX_P__)
+        self.minp = kwargs_gen.get('min_p', config.__DEFAULT_MIN_P__)
+        self.maxq = kwargs_gen.get('max_q', config.__DEFAULT_MAX_Q__)
+        self.minq = kwargs_gen.get('min_q', config.__DEFAULT_MIN_Q__)
+        self.nb_classes = kwargs_gen.get('nb_classes', config.__DEFAULT_NB_CLASSES__)
+        self.nb_groups = kwargs_gen.get('nb_groups', config.__DEFAULT_NB_GROUPS__)
 
     def run(self):
         pass
