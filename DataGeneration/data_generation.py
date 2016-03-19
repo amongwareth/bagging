@@ -6,8 +6,14 @@ logger = logging.getLogger(__name__)
 
 
 class DataGeneration(object):
+    '''
+
+    '''
 
     def __init__(self, **kwargs_gen):
+        '''
+
+        '''
         super().__init__()
         self.nb_bids = kwargs_gen.get('nb_bids', config.__DEFAULT_NB_BIDS__)
         self.maxp = kwargs_gen.get('max_p', config.__DEFAULT_MAX_P__)
@@ -18,19 +24,34 @@ class DataGeneration(object):
         self.nb_groups = kwargs_gen.get('nb_groups', config.__DEFAULT_NB_GROUPS__)
 
     def run(self):
+        '''
+
+        '''
         pass
 
     def __repr__(self):
+        '''
+
+        '''
         return "%s(%r)" % (self.__class__.__name__, self.__dict__)
 
 
 class OneBid(object):
+    '''
+
+    '''
 
     def __init__(self, max_q=None, min_q=None, max_p=None, min_p=None):
+        '''
+
+        '''
         self.bidder_class = None
         self.bidder_group = None
         self.bid_p = None
         self.bid_q = None
 
     def __repr__(self):
+        '''
+
+        '''
         return "%s(%r)" % (self.__class__.__name__, self.__dict__)
