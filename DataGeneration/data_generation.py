@@ -16,7 +16,6 @@ class DataGeneration(object):
         self.minq = kwargs_gen.get(min_q, config.__DEFAULT_MIN_Q__)
         self.nb_classes = kwargs_gen.get(nb_classes, config.__DEFAULT_NB_CLASSES__)
         self.nb_groups = kwargs_gen.get(nb_groups, config.__DEFAULT_NB_GROUPS__)
-        print('bob')
 
     def run(self):
         pass
