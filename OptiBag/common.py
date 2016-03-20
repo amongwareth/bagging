@@ -3,6 +3,7 @@ import logging
 import logging.config
 from configparser import ConfigParser, ExtendedInterpolation
 import os
+import sys
 import ast
 import copy
 from Config.configfile import defaultconfig
@@ -16,17 +17,15 @@ logger = logging.getLogger(__name__)
 '''
 TODO
 -------
-    + implement log conf and config file
 '''
 
 # Configure common argument
 
 
 def treat_common_args(args):
-    parser = ConfigParser(interpolation=ExtendedInterpolation())
     if args.version:
-        print(config.version)
         sys.exit(0)
+    parser = ConfigParser(interpolation=ExtendedInterpolation())
     variables.config = copy.deepcopy(defaultconfig)
 
     # Read actual config file
@@ -35,13 +34,13 @@ def treat_common_args(args):
     arg = vars(args)
     update_conf(arg, "common")
 
-    logconf = variables.config["common"]['logconfigfile']
-    if os.path.isfile(logconf):
-        logging.config.fileConfig(logconf, disable_existing_loggers=False)
+    # logconf = variables.config["common"]['logconfigfile']
+    if os.path.isfile(args.logconfigfile):
+        logging.config.fileConfig(args.logconfigfile, disable_existing_loggers=False)
 
 
-def describe(args, others):
-    print('OPTIBAG version ', config.version)
+def describe(others):
+    print('OPTIBAG version', config.version)
 
 
 def parser(argsparser):
