@@ -7,14 +7,10 @@ logger = logging.getLogger(__name__)
 
 
 class DataGeneration(object):
-    '''
-    General class to generate random bids in order to test the bagging algorithms
-    '''
+    ''' General class to generate random bids in order to test the bagging algorithms '''
 
     def __init__(self, **kwargs_gen):
-        '''
-        Initialize the attributes with default values defined in the Config.config file
-        '''
+        ''' Initialize the attributes with default values defined in the Config.config file '''
         super().__init__()
         self.nb_bids = kwargs_gen.get('nb_bids', config.__DEFAULT_NB_BIDS__)
         self.maxp = kwargs_gen.get('max_p', config.__DEFAULT_MAX_P__)
@@ -25,9 +21,7 @@ class DataGeneration(object):
         self.nb_groups = kwargs_gen.get('nb_groups', config.__DEFAULT_NB_GROUPS__)
 
     def run(self):
-        '''
-        Method that generates random bids, given the attributes.
-        '''
+        ''' Method that generates random bids, given the attributes.'''
         classes = np.floor(np.random.random_sample(self.nb_bids) * self.nb_classes)
         groups = np.floor(np.random.random_sample(self.nb_bids) * self.nb_groups)
         bids_q = np.round(np.random.random_sample(self.nb_bids) * (self.maxq - self.minq) + self.minq)
@@ -38,25 +32,19 @@ class DataGeneration(object):
 
     @property
     def classes(self):
-        '''
-        Method that orders the random bids by bid class and bid group
-        '''
+        ''' Method that orders the random bids by bid class and bid group'''
         ret = {i: {j: [] for j in range(self.nb_groups)} for i in range(self.nb_classes)}
         for bid in self.data:
             ret[bid.bidder_class][bid.bidder_group].append(bid)
         return ret
 
     def __repr__(self):
-        '''
-        Returns the class name and its attributes
-        '''
+        ''' Returns the class name and its attributes'''
         return "%s(%r)" % (self.__class__.__name__, self.__dict__)
 
 
 class OneBid(object):
-    '''
-    Bid class.
-    '''
+    ''' Bid class. '''
 
     def __init__(self, oneclass, group, bid_p, bid_q):
         '''
@@ -72,7 +60,5 @@ class OneBid(object):
         self.bid_q = bid_q
 
     def __repr__(self):
-        '''
-        Returns the class name and its attributes
-        '''
+        ''' Returns the class name and its attributes '''
         return "%s(%r)" % (self.__class__.__name__, self.__dict__)

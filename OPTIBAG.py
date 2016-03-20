@@ -25,7 +25,7 @@ TODO
 -----
 '''
 if __name__ == '__main__':
-    """ OPTIBAG entry point. """
+    ''' OPTIBAG entry point. '''
     rest = sys.argv[1::]
     common = False
     describe([])

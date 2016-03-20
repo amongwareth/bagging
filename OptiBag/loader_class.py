@@ -11,7 +11,7 @@ class LoaderClass(object):
         self._loaded_class = {}
 
     def get_module(self, module_name):
-        """	This method returns the module  """
+        '''	This method returns the module '''
         if module_name in self._loaded_module:
             logger.debug("Saved imported module '%s'", module_name)
             module = self._loaded_module[module_name]
