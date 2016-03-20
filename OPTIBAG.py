@@ -2,10 +2,14 @@
 
 import argparse
 import sys
+import logging
 
 from OptiBag.common import treat_common_args, parser as pcommon, describe
 from OptiBag.data_gen import parser as pd
 from OptiBag.optim_alg import parser as po
+
+logger = logging.getLogger(__name__)
+
 
 parser = argparse.ArgumentParser(prog='OPTIBAG', argument_default=argparse.SUPPRESS)
 pcommon(parser)
@@ -26,7 +30,7 @@ if __name__ == '__main__':
     common = False
     describe([])
     while rest:
-        print('rest', rest)
+        logger.debug('Successive command line arguments during parsing : %s', rest)
         args, nrest = parser.parse_known_args(rest)
         if common and nrest == rest:
             break

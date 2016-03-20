@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def launch(args, others):
-    print('AAAAAAAAA', args)
+    logger.debug('optim_alg parser args : %s', args)
 
 
 def parser(parent_parser):

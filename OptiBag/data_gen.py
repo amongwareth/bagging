@@ -16,8 +16,8 @@ def launch(args, others):
     kwargs_gen.update({'nb_classes': args.nb_classes, 'nb_groups': args.nb_groups})
     generator = DataGeneration(**kwargs_gen)
     variables.data = generator.run()
-    print('generator', generator, '\n')
-    print(variables.data.classes)
+    logger.debug('generator : %s', generator)
+    logger.debug('classes : %s', variables.data.classes)
 
 
 def parser(parent_parser):
