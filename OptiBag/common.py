@@ -7,6 +7,7 @@ import sys
 import ast
 import copy
 from Config.configfile import defaultconfig
+from OptiBag.loader_class import LoaderClass
 
 import Config.config as config
 import Config.variables as variables
@@ -27,6 +28,7 @@ def treat_common_args(args):
         sys.exit(0)
     parser = ConfigParser(interpolation=ExtendedInterpolation())
     variables.config = copy.deepcopy(defaultconfig)
+    variables.loader = LoaderClass()
 
     # Read actual config file
     parser.read(args.config)
