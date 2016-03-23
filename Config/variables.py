@@ -6,3 +6,4 @@ configfile = None
 data = None
 loader = None
 algo = None
+result = None

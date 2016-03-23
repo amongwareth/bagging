@@ -13,6 +13,7 @@ def launch(args, others):
     logger.debug('optim_alg parser args : %s', args)
     variables.algo = variables.loader.get_instance(config.__ALGS_PATHS__[args.algo])
     variables.algo.run()
+    logger.debug('The result is %s', variables.result)
 
 
 def parser(parent_parser):

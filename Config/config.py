@@ -7,6 +7,7 @@ __DATA_PATHS__ = {'data_generation': 'DataGeneration.data_generation.DataGenerat
                   }
 
 # Bids' parameters
+__DEFAULT_Q_CAPACITY__ = 60
 __DEFAULT_NB_BIDS__ = 20
 __DEFAULT_MAX_Q__ = 60
 __DEFAULT_MIN_Q__ = 10

@@ -26,7 +26,7 @@ class DataGeneration(object):
         groups = np.floor(np.random.random_sample(self.nb_bids) * self.nb_groups)
         bids_q = np.round(np.random.random_sample(self.nb_bids) * (self.maxq - self.minq) + self.minq)
         bids_p = np.random.random_sample(self.nb_bids) * (self.maxp - self.minp) + self.minp
-        self.data = [OneBid(oneclass, group, bid_p, bid_q)
+        self.bids = [OneBid(oneclass, group, bid_p, bid_q)
                      for (oneclass, group, bid_p, bid_q) in zip(classes, groups, bids_p, bids_q)]
         return self
 
@@ -34,7 +34,7 @@ class DataGeneration(object):
     def classes(self):
         ''' Method that orders the random bids by bid class and bid group'''
         ret = {i: {j: [] for j in range(self.nb_groups)} for i in range(self.nb_classes)}
-        for bid in self.data:
+        for bid in self.bids:
             ret[bid.bidder_class][bid.bidder_group].append(bid)
         return ret
 
