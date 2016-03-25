@@ -39,7 +39,6 @@ class BruteForce(object):
         return "%s(%r)" % (self.__class__.__name__, self.__dict__)
 
     def _dict_tree(self, qty, profit, combination, nodes):
-        temp_dict = {}
         if nodes:
             for node in nodes:
                 nodes_copy = list(nodes)
@@ -48,16 +47,10 @@ class BruteForce(object):
                 if new_qty <= config.__DEFAULT_Q_CAPACITY__:
                     new_profit = profit + node.bid_p
                     new_combination = combination + (node,)
-                    temp_dict[node] = {'qty': new_qty, 'profit': new_profit, 'combination': new_combination,
-                                       'subtree': self._dict_tree(new_qty, new_profit, new_combination, nodes_copy)}
+                    self._dict_tree(new_qty, new_profit, new_combination, nodes_copy)
                     if self.best_comb['profit'] == 0 or self.best_comb['profit'] < new_profit:
                         self.best_comb['profit'] = new_profit
                         self.best_comb['combination'] = new_combination
                         self.best_comb['quantity'] = new_qty
                         variables.result = self.best_comb
                         logger.debug('New best combination : %s', self.best_comb)
-                else:
-                    temp_dict[node] = {'qty': new_qty}
-            return temp_dict
-        else:
-            return {}
